@@ -9,7 +9,6 @@
     "standard-with-typescript",
     "plugin:react-hooks/recommended",
     "react-app",
-    "@typescript-eslint",
     "prettier"
   ],
   "overrides": [],

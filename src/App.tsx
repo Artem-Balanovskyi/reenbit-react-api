@@ -1,4 +1,6 @@
-import './App.css'
+import './css/reset.css'
+import './css/fonts.css'
+import './css/index.css'
 
 function App() {
   return (

@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  background: #E5E5E5
 }
 
 *,
@@ -15,4 +16,23 @@ body {
   font-size: 16px;
   line-height: 150%;
   color: rgba(0, 0, 0, 0.5);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.main-page__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+
+}
+
+.main-page__title {
+  min-width: 600px;
+  height: 200px;
+  margin: 86px auto 16px;
+  background: url(../img/main-page__img.png) no-repeat center;
 }

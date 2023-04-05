@@ -1,7 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-// import './css/reset.css';
-// import './css/fonts.css';
-// import './css/index.css';
 import { MainPage } from './pages/MainPage';
 import { CharacterPage } from './pages/CharacterPage';
 

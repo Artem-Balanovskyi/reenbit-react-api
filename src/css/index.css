@@ -36,7 +36,7 @@ img {
   background: url(../img/main-page__img.png) no-repeat center;
 }
 
-.search-form {
+.main-page__search-form {
   min-width: 1020px;
   min-height: 56px;
   margin: 0 auto 33px;
@@ -47,7 +47,7 @@ img {
   color: white;
 }
 
-.search-form__field {
+.main-page__search-form__field {
   width: 100%;
   background: transparent url(../img/svg/search-icon.svg) no-repeat left;
   background-size: 17.5px;
@@ -55,31 +55,72 @@ img {
   border: none;
 }
 
-.search-form__field:focus,
-.search-form__field:active {
+.main-page__search-form__field:focus,
+.main-page__search-form__field:active {
   outline: none;
 }
 
-.search-form__info {
+.main-page__search-form__info {
   display: block;
   overflow: hidden;
   padding: 10px 18px;
 }
 
-.search-form__field::placeholder {
+.main-page__search-form__field::placeholder {
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
   color: rgba(0, 0, 0, 0.5);
 }
 
-.content__container {
+.main-page__content__container {
   display: grid;
-  grid-template-columns: repeat(8, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 20px;
   row-gap: 24px;
+  position: relative;
 }
 
-.content__card {
-grid-column: span 2;
+.character__content__card {
+  grid-column: span 1;
+  width: 240px;
+  height: 244px;
+}
+
+.character__content__card-pic {
+  width: 240px;
+  height: 168px;
+  overflow: hidden;
+}
+
+.character__content__card-img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.char-details__navigation-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 104px;
+  max-height: 21px;
+  background: transparent url(../img/svg/arrow_back_24px.svg) no-repeat left;
+  background-size: 16px;
+  margin: 25px 0 0 54px;
+  padding-left: 28px;
+  border: 1px solid black;
+}
+
+.char-details__navigation-title {
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 21px;
+  color: #000000;
+}
+
+.char-details__navigation-link {
+  display: block;
 }

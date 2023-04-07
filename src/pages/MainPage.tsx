@@ -1,23 +1,24 @@
 import React from 'react';
 import { Character } from '../components/Character';
-import { useCharacters } from '../hooks/characters';
-export function MainPage() {
-    const { characters } = useCharacters()    
-
+import { useAllCharacters } from '../hooks/allCharacters';
+export function MainPage(props: any) {
+    console.log('🚀 ~ file: MainPage.tsx:5 ~ MainPage ~ props:', props)
+    const { allCharacters } = useAllCharacters()    
+ 
     return (
         <div className="main-page__wrapper">
             <div className="main-page__title"></div>
-            <form className="search-form">
-                    <fieldset className="search-form__wrap">
-                        <span className="search-form__info">
-                            <input type="text" name="search-form" className="search-form__field"
+            <form className="main-page__search-form">
+                    <fieldset className="main-page__search-form__wrap">
+                        <span className="main-page__search-form__info">
+                            <input className="main-page__search-form__field" type="text" name="search-form"
                                 placeholder="Filter by name..." />
                         </span>
                     </fieldset>
             </form>
-        <section className='content'>
-            <div className='content__container'>
-            {characters.length > 0 && characters.map(character => <Character character={character} key={character.id} />)}
+        <section className='main-page__content'>
+            <div className='main-page__content__container'>
+            {allCharacters.length > 0 && allCharacters.map(character => <Character character={character} key={character.id} />)}
             </div>
         </section>
             

@@ -14,18 +14,18 @@ interface DataInterface {
   results: []
 }
 
-export function useCharacters() {
-  const [characters, setCharacters] = useState<ICharacter[]>([])
+export function useAllCharacters() {
+  const [allCharacters, setAllCharacters] = useState<ICharacter[]>([])
 
   useEffect(() => {
-    fetchCourses()
+    fetchAllCharacters()
   }, [])
 
-  async function fetchCourses() {
+  async function fetchAllCharacters() {
     const { data } = await axios.get<DataInterface>(url)
     
-    setCharacters(data.results)
+    setAllCharacters(data.results)
   }
 
-  return { characters }
+  return { allCharacters }
 }

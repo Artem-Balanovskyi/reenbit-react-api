@@ -14,7 +14,7 @@ export function CharacterDetailsPage() {
   }
 
   const { characterDetails } = useCharacterDetails(url)
-
+  if (characterDetails) console.log(characterDetails.name)
 
   return (
     <div className='character-page__wrapper'>

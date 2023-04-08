@@ -8,19 +8,20 @@ export interface ICharacterProps {
 
 export function Character({ character }: ICharacterProps) {
   return (
-    <div className='character__content__card'>
-      <div className='character__content__card-pic'>
-        <img className='character__content__card-img' src={character.image} alt={character.name} />
+    <Link className='character__card-link' to={character.id.toString()}>
+      <div className='character__card'>
+        <div className='character__card-pic'>
+          <img
+            className='character__card-img'
+            src={character.image}
+            alt={character.name}
+          />
+        </div>
+        <div className='character__card-stats'>
+          <h3 className='character__card-title'>{character.name}</h3>
+          <p className='character__card-desk'>{character.species}</p>
+        </div>
       </div>
-      <div className='character__content__card-stats'>
-      <Link to={(character.id.toString())}>
-        <span className='character__content__card-link'>
-          Push here!
-        </span>
-      </Link>
-        <h3 className='character__content__card-title'>{character.name}</h3>
-      </div>
-      <p className='content__card-desk'>{character.species}</p>
-    </div>
+    </Link>
   )
 }

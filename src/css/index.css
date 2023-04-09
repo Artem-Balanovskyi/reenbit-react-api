@@ -24,6 +24,8 @@ img {
   height: auto;
 }
 
+/* Main page styles start */
+
 .main-page__wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -82,6 +84,10 @@ img {
   grid-row-gap: 24px;
 }
 
+/* Main page styles end */
+
+/* Character component styles start */
+
 .character__card {
   grid-column: span 1;
   width: 240px;
@@ -127,16 +133,13 @@ img {
 
 }
 
-.char-details__navigation-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 104px;
-  max-height: 21px;
-  background: transparent url(../img/svg/arrow_back_24px.svg) no-repeat left;
-  background-size: 16px;
-  margin: 25px 0 0 54px;
-  padding-left: 28px;
-  border: 1px solid black;
+/* Character component styles end */
+
+/* Character Details Page styles start */
+.char-details__navigation {
+  width: 104px;
+  height: 21px;
+  margin-bottom: 32px;
 }
 
 .char-details__navigation-title {
@@ -150,4 +153,76 @@ img {
 
 .char-details__navigation-link {
   display: block;
+  width: 104px;
+  height: 21px;
+  background: transparent url(../img/svg/arrow_back_24px.svg) no-repeat left;
+  background-size: 16px;
+  margin: 25px 0 0 54px;
+  padding-left: 28px;
+  text-decoration: none;
 }
+
+.char-details__content-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.char-details__content-pic {
+  width: 300px;
+  height: 300px;
+  display: block;
+  margin: auto;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+
+.char-details__content-title {
+  font-size: 48px;
+  line-height: 56px;
+  color: #081F32;
+  margin-bottom: 48px;
+}
+
+.char-details__content-info {
+  width: 117px;
+  height: 24px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #8E8E93;
+  margin-bottom: 48px;
+}
+
+.char-details__content-info-block {
+  width: 413px;
+  height: 64px;
+}
+
+.char-details__content-info-block-title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+  color: #081F32;
+}
+
+.char-details__content-info-block-data {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.25px;
+  color: #6E798C;
+  margin-bottom: 11px;
+}
+
+.char-details__content-info-block-hr {
+  display: block;
+  width: 95%;
+  height: 1px;
+  background: rgba(33, 33, 33, 0.08);
+  margin-bottom: 9px;
+}
+
+/* Character Details Page styles end */

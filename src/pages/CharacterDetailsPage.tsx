@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useCharacterDetails } from '../hooks/characterDetails'
 
 let url = 'https://rickandmortyapi.com/api/character/'
@@ -14,17 +14,63 @@ export function CharacterDetailsPage() {
   }
 
   const { characterDetails } = useCharacterDetails(url)
-  if (characterDetails) console.log(characterDetails.name)
-
   return (
     <div className='character-page__wrapper'>
       <nav className='char-details__navigation'>
-        <a className='char-details__navigation-link' href='/'>
+        <Link className='char-details__navigation-link' to='/'>
           <div className='char-details__navigation-wrap'>
-          <h3 className='char-details__navigation-title'>GO BACK</h3>
+            <h3 className='char-details__navigation-title'>GO BACK</h3>
           </div>
-        </a>
+        </Link>
       </nav>
+      {characterDetails && (
+        <div className='char-details__content-wrap'>
+          <div className='char-details__content-img-wrap'>
+            <img
+              className='char-details__content-pic'
+              src={characterDetails.image}
+              alt='character-page__img'
+            />
+          </div>
+          <div className='char-details__content-title'>{characterDetails.name || 'Unknown'}</div>
+          <div className='char-details__content-info'>Informations</div>
+          <div className='char-details__content-info-block'>
+            <div className='char-details__content-info-block-title'>Gender</div>
+            <div className='char-details__content-info-block-data'>
+              {characterDetails.gender || 'Unknown'}
+            </div>
+            <div className='char-details__content-info-block-hr'></div>
+          </div>
+          <div className='char-details__content-info-block'>
+            <div className='char-details__content-info-block-title'>Status</div>
+            <div className='char-details__content-info-block-data'>
+              {characterDetails.status || 'Unknown'}
+            </div>
+            <div className='char-details__content-info-block-hr'></div>
+          </div>
+          <div className='char-details__content-info-block'>
+            <div className='char-details__content-info-block-title'>Specie</div>
+            <div className='char-details__content-info-block-data'>
+              {characterDetails.species || 'Unknown'}
+            </div>
+            <div className='char-details__content-info-block-hr'></div>
+          </div>
+          <div className='char-details__content-info-block'>
+            <div className='char-details__content-info-block-title'>Origin</div>
+            <div className='char-details__content-info-block-data'>
+              {characterDetails.origin.name || 'Unknown'}
+            </div>
+            <div className='char-details__content-info-block-hr'></div>
+          </div>
+          <div className='char-details__content-info-block'>
+            <div className='char-details__content-info-block-title'>Type</div>
+            <div className='char-details__content-info-block-data'>
+              {characterDetails.type || 'Unknown'}
+            </div>
+            <div className='char-details__content-info-block-hr'></div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

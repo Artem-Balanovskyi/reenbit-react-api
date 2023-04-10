@@ -30,6 +30,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
+  /* position: relative; */
 }
 
 .main-page__title {
@@ -84,6 +85,25 @@ img {
   grid-row-gap: 24px;
 }
 
+.error-message__wrap {
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  margin-left: -150px;
+  top: 50%;
+  margin-top: -50px;
+}
+
+.loader__wrap {
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -50px;
+}
+
 /* Main page styles end */
 
 /* Character component styles start */
@@ -98,7 +118,7 @@ img {
 }
 
 .character__card-pic {
-  width: 240px;
+  max-width: 240px;
   height: 168px;
   overflow: hidden;
 }
@@ -137,8 +157,8 @@ img {
 
 /* Character Details Page styles start */
 .char-details__navigation {
-  width: 104px;
-  height: 21px;
+  max-width: 104px;
+  max-height: 21px;
   margin-bottom: 32px;
 }
 
@@ -170,8 +190,8 @@ img {
 }
 
 .char-details__content-pic {
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 300px;
   display: block;
   margin: auto;
   border-radius: 50%;
@@ -186,8 +206,8 @@ img {
 }
 
 .char-details__content-info {
-  width: 117px;
-  height: 24px;
+  max-width: 117px;
+  max-height: 24px;
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
@@ -226,3 +246,14 @@ img {
 }
 
 /* Character Details Page styles end */
+
+/* ErrorMessage component styles start */
+
+.error-message__text {
+  text-align: center;
+  font-weight: 600;
+  color: red;
+  font-size: 2rem;
+}
+
+/* ErrorMessage component styles end */

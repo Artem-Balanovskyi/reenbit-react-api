@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link, useParams } from 'react-router-dom'
+import { ErrorMessage } from '../components/ErrorMessage'
+import { Loader } from '../components/Loader'
 import { useCharacterDetails } from '../hooks/characterDetails'
 
 let url = 'https://rickandmortyapi.com/api/character/'
@@ -13,9 +15,12 @@ export function CharacterDetailsPage() {
     throw new Error('Error 3!')
   }
 
-  const { characterDetails } = useCharacterDetails(url)
+  const { characterDetails, loading, error } = useCharacterDetails(url)
+  
   return (
     <div className='character-page__wrapper'>
+      <div className='loader__wrap'>{loading && <Loader loading={loading} />}</div>
+      <div className='error-message__wrap'>{error && <ErrorMessage error={error} />}</div>
       <nav className='char-details__navigation'>
         <Link className='char-details__navigation-link' to='/'>
           <div className='char-details__navigation-wrap'>

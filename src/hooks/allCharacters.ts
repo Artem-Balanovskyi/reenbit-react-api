@@ -14,14 +14,14 @@ interface DataInterface {
   results: []
 }
 
-export function useAllCharacters(paginationNumber: number) {
-  console.log('🚀 ~ file: allCharacters.ts:18 ~ useAllCharacters ~ paginationNumber:', paginationNumber)
+export function useAllCharacters(paginationNumber: number, filterByName?: string ) {
+  // console.log('🚀 ~ file: allCharacters.ts:18 ~ useAllCharacters ~ filterByName:', filterByName)
   const [allCharacters, setAllCharacters] = useState<ICharacter[]>([])
   const [info, setInfo] = useState<DataInterface['info']>()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   
-  const url = `https://rickandmortyapi.com/api/character/?page=${paginationNumber}`
+  const url = filterByName ? `https://rickandmortyapi.com/api/character/?name=${filterByName}` : `https://rickandmortyapi.com/api/character/?page=${paginationNumber}`
 
   useEffect(() => {
     fetchAllCharacters(url)

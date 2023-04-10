@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { type KeyboardEvent, useState } from 'react'
 import { Character } from '../components/Character'
 import { ErrorMessage } from '../components/ErrorMessage'
 import { Loader } from '../components/Loader'
@@ -7,10 +7,19 @@ import { useAllCharacters } from '../hooks/allCharacters'
 
 export function MainPage() {
   const [paginationNumber, setPaginationNumber] = useState(1)
-  const { allCharacters, loading, error, info } = useAllCharacters(paginationNumber)
+  const [filterByName, setFilterByName] = useState('');
+  const { allCharacters, loading, error, info } = useAllCharacters(paginationNumber, filterByName)
 
   const handlePagination = (event: React.ChangeEvent<unknown>, page: number) => {
     setPaginationNumber(page)
+  }
+
+  const handleFiltrationByName = (event: KeyboardEvent<HTMLInputElement>) => {
+
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      console.log('212', filterByName);
+    }
   }
 
   return (
@@ -21,12 +30,15 @@ export function MainPage() {
       <form className='main-page__search-form'>
         <fieldset className='main-page__search-form__wrap'>
           <span className='main-page__search-form__info'>
-            <input
+           { <input
               className='main-page__search-form__field'
               type='text'
               name='search-form'
               placeholder='Filter by name...'
-            />
+              value={filterByName}
+        onChange={event => {setFilterByName(event.target.value)}}
+        onKeyDown={handleFiltrationByName}
+            />}
           </span>
         </fieldset>
       </form>

@@ -1,8 +1,9 @@
 import axios, { type AxiosError } from 'axios'
 import { useState, useEffect } from 'react'
+import { sortByName } from '../helpers/sortByName'
 import { type ICharacter } from '../models/character_interface'
 
-const url = 'https://rickandmortyapi.com/api/character'
+const url = 'https://rickandmortyapi.com/api/character/?page=1'
 
 interface DataInterface {
   info: {
@@ -30,8 +31,10 @@ export function useAllCharacters() {
 
       const { data } = await axios.get<DataInterface>(url)
 
-      setAllCharacters(data.results)   
-      
+      const sortedByName = sortByName(data.results)
+
+      setAllCharacters(sortedByName)
+
       setLoading(false)
     } catch (err: unknown) {
       const error = err as AxiosError

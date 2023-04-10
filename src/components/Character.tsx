@@ -7,19 +7,21 @@ export interface ICharacterProps {
 }
 
 export function Character({ character }: ICharacterProps) {
+  const cardStyles = character.name.length > 20 ? 'character__card-title-sm' : 'character__card-title-lg'
+  
   return (
     <Link className='character__card-link' to={character.id.toString()}>
       <div className='character__card'>
         <div className='character__card-pic'>
-          <img
-            className='character__card-img'
-            src={character.image}
-            alt={character.name}
-          />
+          <img className='character__card-img' src={character.image} alt={character.name} />
         </div>
         <div className='character__card-stats'>
-          <h3 className='character__card-title'>{character.name}</h3>
-          <p className='character__card-desk'>{character.species}</p>
+          <div className={cardStyles}>
+            <h3>{character.name}</h3>
+          </div>
+          <div className='character__card-desk'>
+            <p>{character.species}</p>
+          </div>
         </div>
       </div>
     </Link>

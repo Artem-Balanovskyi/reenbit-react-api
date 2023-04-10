@@ -3,7 +3,6 @@ import { useState, useEffect } from 'react'
 import { sortByName } from '../helpers/sortByName'
 import { type ICharacter } from '../models/character_interface'
 
-const url = 'https://rickandmortyapi.com/api/character/?page=1'
 
 interface DataInterface {
   info: {
@@ -15,16 +14,21 @@ interface DataInterface {
   results: []
 }
 
-export function useAllCharacters() {
+export function useAllCharacters(paginationNumber: number) {
+  console.log('🚀 ~ file: allCharacters.ts:18 ~ useAllCharacters ~ paginationNumber:', paginationNumber)
   const [allCharacters, setAllCharacters] = useState<ICharacter[]>([])
+  const [info, setInfo] = useState<DataInterface['info']>()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  
+  const url = `https://rickandmortyapi.com/api/character/?page=${paginationNumber}`
 
   useEffect(() => {
-    fetchAllCharacters()
-  }, [])
+    fetchAllCharacters(url)
+  }, [url])
+  
 
-  async function fetchAllCharacters() {
+  async function fetchAllCharacters(url: string) {
     try {
       setError('')
       setLoading(true)
@@ -34,6 +38,7 @@ export function useAllCharacters() {
       const sortedByName = sortByName(data.results)
 
       setAllCharacters(sortedByName)
+      setInfo(data.info)
 
       setLoading(false)
     } catch (err: unknown) {
@@ -43,5 +48,5 @@ export function useAllCharacters() {
     }
   }
 
-  return { allCharacters, loading, error }
+  return { allCharacters, loading, error, info }
 }

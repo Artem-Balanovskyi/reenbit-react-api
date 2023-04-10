@@ -1,11 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Character } from '../components/Character'
 import { ErrorMessage } from '../components/ErrorMessage'
 import { Loader } from '../components/Loader'
+import PaginationBar from '../components/PaginationBar'
 import { useAllCharacters } from '../hooks/allCharacters'
-export function MainPage(props: any) {
-  console.log('🚀 ~ file: MainPage.tsx:5 ~ MainPage ~ props:', props)
-  const { allCharacters, loading, error } = useAllCharacters()
+
+export function MainPage() {
+  const [paginationNumber, setPaginationNumber] = useState(1)
+  const { allCharacters, loading, error, info } = useAllCharacters(paginationNumber)
+
+  const handlePagination = (event: React.ChangeEvent<unknown>, page: number) => {
+    setPaginationNumber(page)
+  }
 
   return (
     <div className='main-page__wrapper'>
@@ -32,6 +38,11 @@ export function MainPage(props: any) {
             ))}
         </div>
       </section>
+      {info && (
+        <div className='main-page__pagination-bar'>
+          <PaginationBar handler={handlePagination} counter={info.pages} />
+        </div>
+      )}
     </div>
   )
 }
